@@ -1,0 +1,569 @@
+#include <iostream> // Library of standard input-output stream (cout/ cin/ int/ double/ float )
+#include <iomanip> // Library of manage input and output formatting (setw/ getline/ setprecision/ left or right) 
+#include <sstream> // Library of String Stream it's allows performing insertion, extraction, and other operation (clear/ str)
+#include <stdio.h> // Library of Standard Output and related to input/output function (getch)
+#include <stdlib.h> // Library of Standard Library it's related to input/output functions and related to allocation memory of input/ output
+#include <conio.h> // Library of C++ header file used mostly by compilers to provide console input/output (getch)
+#include <string.h> // Library of string.h header file in C++ used to manipulate a string or array of characters. (strcpy/ strlen
+using namespace std;
+
+
+const string Msg_selection = "\nYour Selection is: ";
+const string Msg_cardNo = "Please Enter Card Number : ";
+const string Msg_pytAmt = "Please Enter Your Payment Amount :RM ";
+const string spaceline = "\n----------------------------------------------------------------------------";
+const string Msg_invalidSelection = "\nInvalid Selection, Please Try Again.";
+const string Msg_invalidAmount = "\nInsuffient Amount, Please Try Again.";
+const string Msg_invalidCardNo = "\nInvalid Credit Card Number, Please Try Again.";
+
+static void logo()
+{
+	cout << "\t\t __            __    __      _________" << endl;
+	cout << "\t\t|  \\          |  \\  |  \\    |         \\ " << endl;
+	cout << "\t\t| $$          | $$  | $$     \\$$$$$$$$$" << endl;
+	cout << "\t\t| $$           \\$$\\/  $$       | $$" << endl;
+	cout << "\t\t| $$            >$$  $$        | $$" << endl;
+	cout << "\t\t| $$           /  $$$$\\        | $$" << endl;
+	cout << "\t\t| $$_____     |  $$ \\$$\\       | $$" << endl;
+	cout << "\t\t| $$     \\    | $$  | $$       | $$" << endl;
+	cout << "\t\t \\$$$$$$$$     \\$$   \\$$        \\$$  " << endl;
+
+}
+
+static void header() {
+	string name;
+	cout << spaceline << endl;
+	cout << "\n                  Welcome To Lanxi Train System                  " << endl;
+}
+
+static void mainMenu() {
+	cout << spaceline << endl;
+	cout << "\n==== Train Ticket System ====" << endl;
+	cout << "[1] View Train Schedule: " << endl;
+	cout << "[2] Book Ticket: " << endl;
+	cout << "[3] Customer Ticket Service: " << endl;
+	cout << "[4] Log in/Register : " << endl;
+	cout << "[5] Exit: " << endl;
+	cout << spaceline << endl;
+	cout << Msg_selection;
+}
+
+static void trainSchedule() {
+	cout << spaceline << endl;
+	cout << "Train No   Train Name  From          To        Departure   Arrival    Price(RM)" << endl;
+	cout << "1          Express KL  Kuala Lumpur  Penang    8.00am      12.00pm    45.00" << endl;
+	cout << "2          Johor Line  Kuala Lumpur  Johor     9.30am      14.00pm    60.00" << endl;
+	cout << "3          Night Rider Kuala Lumpur  Singapore 10.00am     06.00pm    80.00" << endl;
+	cout << "4          Perlis Line Penang        Perlis    1.30pm      3.30pm     25.00" << endl;
+	cout << "5          Fast line   Selangor      Kedah     12.00pm     4.00pm     65.00" << endl;
+	cout << spaceline << endl;
+	cout << Msg_selection << endl;
+}
+
+
+
+
+static void payment_Menu()
+
+{
+	cout << "\nPlease choose a payment method:\n";
+	cout << "[A].Cash" << endl;
+	cout << "[B].Credit Card / Debit Card" << endl;
+	cout << Msg_selection;
+}
+
+
+static void thankYou() {
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------" << endl;
+	cout << "-------------------------- T H A N K ---------------------------" << endl;
+	cout << "--------------------------   Y O U   ---------------------------" << endl;
+	cout << "----------------- F O R  Y O U R  B O O K I N G --------------------" << endl;
+	cout << "---------------H O P E  Y O U  H A V E  A  N I C E  D A Y ----------------" << endl;
+	cout << "---------------------B Y E    ^=^     B Y E------------------------" << endl;
+	cout << "----------------------------------------------------------------" << endl;
+}
+
+static void login() {
+	cout << spaceline << endl;
+	cout << "\nPlease Select The User :" << endl;
+	cout << "[1] Login ( Member )" << endl;
+	cout << "[2] Register New ( Member )" << endl;
+	cout << "[3] Exit To Main Menu \n" << endl;
+	cout << "=======================================================" << endl;
+	cout << "** Join our Member for more promotion & discount 25% !!! **" << endl;
+	cout << "=======================================================" << endl;
+	cout << Msg_selection;
+}
+
+static void custserviceticket(int ticketcount) {
+	int cancelService;
+
+	cout << "\nYou Selected Customer Ticket Service" << endl;
+	cout << "\nPlease Choose Your Service Option :" << endl;
+	cout << "[1] Cancel Ticket" << endl;
+	cout << "[2] Report an Issue" << endl;
+	cout << "[3] Contact us" << endl;
+	cout << "[4] Exit service" << endl;
+	cout << Msg_selection;
+	cin >> cancelService;
+	switch (cancelService) {
+	case 1:
+		if (ticketcount > 0) {
+			cout << "\nCancel Status: Your ticket has been cancel now." << endl;
+		}
+		else {
+			cout << "\nCancel Status: You haven't place any tickets." << endl;
+		}
+		break;
+
+	case 2: {
+		string issue;
+		cout << "\nPlease describe the issue with your order: \n";
+		cin.ignore();
+		getline(cin, issue);
+		cout << "\nThank you! We have received your issue report: " << issue << endl;
+		break;
+	}
+	case 3:
+
+		cout << "\nContact us please: " << endl;
+		cout << "==============================================" << endl;         
+		cout << "\n============================================" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "----------------- K I N D L Y ----------------" << endl;
+		cout << "------------------- M A K E ------------------" << endl;
+		cout << "---------------------- A ---------------------" << endl;
+		cout << "------------------- C A L L ------------------" << endl;
+		cout << "--------------------- T O --------------------" << endl;
+		cout << "--------------------- U S --------------------" << endl;
+		cout << "---------- + 0 1 2 - 6 6 8  0 8 9 8 ----------" << endl;
+		cout << "--------- B R A N C H  M A N A G E R ---------" << endl;
+		cout << "----------------- M R . L A N X I -----------------" << endl;
+		cout << "-----------------------------------------------" << endl;
+		cout << "-----------------------------------------------" << endl;
+		cout << "-- Follow us on our social media :           --" << endl;
+		cout << "-- Instagam :LXT Trai @ Malaysia OFFICIAL  --" << endl;
+		cout << "-- Faceook  :Oficial LXT Tain @ Malaysi  --" << endl;
+		cout << "-- Twitter   :LXT Train OFFICIAL             --" << endl;
+		cout << "==============================================" << endl;
+		break;
+
+	case 4:
+		return mainMenu();
+		break;
+
+	default:
+		return custserviceticket(cancelService);
+	}
+
+}
+
+static void sysClr() {
+	system("cls");
+}
+
+static double paymentvalidation(double subtotal)
+
+{
+	double payamt;
+	while (cin >> payamt)
+	{
+		if (payamt >= subtotal)
+			break;
+		cout << "Insuffient Amount, Please Try again.";
+		cout << Msg_pytAmt;
+	}
+	return payamt;
+}
+
+static string creditcardvalidation()
+{
+	string creditnum;
+	while (cin >> creditnum)
+	{
+		bool checkdigit = false;
+		for (int i = 0; i < creditnum.length(); i++)
+		{
+			if (isdigit(creditnum[i]) == false) {
+				checkdigit = false;
+			}
+			checkdigit = true;
+		}
+		if (checkdigit && creditnum.length() == 16)
+			break;
+		cout << "\nYou enter invalid credit number, please try again.\n";
+		cout << "\nPlease enter your card number(Credit/Debit): ";
+	}
+	return creditnum;
+
+}
+
+static void fineDisplay(double chg) {
+	cout << spaceline << endl;
+	cout << "\nYour Change Is : RM " << chg << "\n" << endl;
+	cout << "----------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------- T H A N K --------------------------------" << endl;
+	cout << "---------------------------------   Y O U   --------------------------------" << endl;
+	cout << "----------------------------------- F O R ----------------------------------" << endl;
+	cout << "------------------------------- B O O K I N G -----------------------------" << endl;
+	cout << "-----------------------------------BYE BYE----------------------------------" << endl;
+}
+
+static string selectValidation(int minValue, int maxValue, string message) {
+	string option;
+	while (cin >> option) {
+		stringstream strm(option);
+		int i;
+		strm >> i;
+		if (option.length() <= 3) if (i >= minValue && i <= maxValue) break;
+		cout << Msg_invalidSelection << endl;
+		cout << message;
+	}
+	return option;
+}
+
+
+static char alphavalidation(char f_val, char s_val, char t_val = 'DEF') {
+	char option;
+	while (cin >> option) {
+		if (toupper(option) == f_val) break;
+		if (toupper(option) == s_val) break;
+		if (t_val != 'DEF' && toupper(option) == t_val) break;
+		cout << Msg_invalidSelection << endl;
+		cout << Msg_selection;
+	}
+	return toupper(option);
+}
+
+static bool loginProcess(int userCount, int userID[], string userName[], string userPwd[]) {
+
+	/* LOGIN */
+	bool userFound = false;
+	bool passMatch = false;
+	int uid;
+	int tempUserCount = 0;
+	string username;
+	string password;
+
+	cout << spaceline << endl << "\n";
+	if (userCount > 0) tempUserCount = userCount - 1;
+
+	if (userName[tempUserCount] == "") {		// Check No Existing User
+		cout << "No Membership Record Found. Please Register New Member" << endl;
+		cout << "\nPress Any Button To Return Menu " << endl;
+		char conti = _getch();
+
+	}
+	else {
+		do {
+			cout << "USERNAME : ";
+			cin >> username;
+			for (int i = 0; i < userCount; ++i) {		// Check Existing User
+				if (username == userName[i]) {
+					uid = userID[i];
+					userFound = true;
+					break;
+				}
+			}
+			if (!userFound) cout << "Invalid Username. Please Try Again!!\n" << endl;
+
+		} while (!userFound);
+
+		do {
+			cout << "PASSWORD : ";
+			cin >> password;
+			if (password == userPwd[uid]) passMatch = true;
+			if (!passMatch) cout << "Invalid Password. Please Try Again!!\n" << endl;
+
+		} while (!passMatch);
+
+		if (userFound && passMatch) {
+			cout << spaceline << endl;
+			cout << "Welcome Back !!! " << userName[uid] << endl;
+			cout << "------------------------------------------------------" << endl;
+		}
+	}
+	return userFound;
+}
+
+static int registerProcess(int userCount, int MAX_USER, int userID[], string userName[], string userPwd[]) {
+
+	/* REGISTER */
+	if (userCount == MAX_USER - 1) {
+		cout << "========================================" << endl;
+		cout << "** Membership availability is FULL !! **" << endl;
+		cout << "**     Please try next time ;)     **" << endl;
+		cout << "========================================" << endl;
+		cout << "\nPress Any Button To Continue" << endl;
+		char conti = _getch();
+	}
+
+	while (userCount < MAX_USER) {
+
+		string username;
+		string password;
+		cout << spaceline << endl << "\n";
+		cout << "Enter The Mandatory(**) Field :" << endl;
+		cout << "** USERNAME : ";
+		cin >> username;
+		cout << "** PASSWORD : ";
+		cin >> password;
+
+		userID[userCount] = userCount;
+		userName[userCount] = username;
+		userPwd[userCount] = password;
+
+		cout << "==========================================" << endl;
+		cout << "** Membership registered successful !!! **" << endl;
+		cout << "==========================================" << endl;
+		cout << "\nPress Any Button To Continue" << endl;
+		char conti = _getch();
+		userCount++;
+		break;
+	};
+
+	return userCount;
+}
+
+static void summaryDisplay(int ticketCount, int ticketOrdered[], string trainname[], string from[], string to[], double tempTotal) {
+
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << "\n-------------------- S U M M A R Y   L I S T -------------------" << endl;
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << left << setw(23) << "TrainNo" << left << setw(20) << "TrainName" << right << setw(16) << "From" << right << setw(16) << "To" << endl;
+
+	for (int i = 0; i < ticketCount; ++i) {
+		cout << left << setw(23) << to_string(i + 1) + ". " << ticketOrdered[i]
+			<< left << setw(20) << trainname[i]
+			<< right << setw(13) << from[i]
+			<< right << setw(13) << to[i] << endl;
+	}
+
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << "\n-------------- P R O F I T   O F   T H E   D A Y ---------------" << endl;
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << "\nSubtotal : RM " << tempTotal << endl;
+	cout << "\n----------------------------------------------------------------" << endl;
+	cout << "\n----------------------------------------------------------------" << endl;
+}
+
+static void invdisplay(int ticketCount, int ticketOrdered[], string trainname[], int prices[],
+	double sstTotal, double tempTotal, char payMethod, double change, string cardNum, double discount, bool isMember, double subtotal)
+{
+	cout << "\n=========================================================================" << endl;
+	cout << "\n                   T R A I N  T I C K E T  I N V O I C E                 " << endl;
+	cout << "\n=========================================================================" << endl;
+	cout << "\n                         RECEIPT FROM LANXI TRAIN                         " << endl;
+	cout << "-------------------------------------------------------------------------\n" << endl;
+	cout << left << setw(23) << "TrainNo" << left << setw(20) << "Train Name" << right << setw(13) << "Prices" << endl;
+	for (int i = 0; i < ticketCount; ++i) {
+		cout << left << setw(23) << to_string(i + 1) + ". " << ticketOrdered[i]
+			<< left << setw(20) << trainname[i]
+			<< right << setw(13) << prices[i] << endl;
+	}
+
+	cout << "\n-------------------------------------------------------------------------" << endl;
+
+	cout << "\nSST                         : RM " << sstTotal << endl;
+	cout << "\nSubtotal                    : RM " << tempTotal << endl;
+	cout << "\n-------------------------------------------------------------------------" << endl;
+	if (payMethod == 'A') cout << "\nChange          : RM " << change << endl;
+	if (payMethod == 'B') cout << "\nCard Number     : " << cardNum << endl;
+	if (isMember) cout << "\nDiscount (25%)  : RM " << discount << endl;
+	cout << "\n=========================================================================" << endl;
+	cout << "Returning To Menu......" << endl;
+	cout << "\nPress Any Button To Return Menu " << endl;
+	char conti = _getch();
+}
+
+
+
+int main()
+{
+	string name;
+	int phonenum, trainno;
+	string ticketSelected;
+	string trainSelected;
+	string paymentSelected;
+	string creditnum;
+	string accnum;
+	string trainname;
+	double temptotal = 0;
+	double payamt = 0;
+	double ssttotal = 0;
+	double subtotal = 0;
+	double discount = 0;
+	double change = 0;
+	char paymethod = ' ';
+	char anotherOrder = ' ';
+	char invoice = ' ';
+	int price = 0;
+	int price101 = 45;
+	int price102 = 60;
+	int price103 = 80;
+	int price104 = 25;
+	int price105 = 65;
+	int priceSelected = 0;
+	bool isMember = false;
+	int ticketCount = 0;
+	const int MAX_ORDERS = 5;			// Maximum of orders
+	string ticket[MAX_ORDERS];			// Store Items Into Total
+	double prices[MAX_ORDERS]{};		// Store Prices Into Total
+	double discountPrice[MAX_ORDERS]{};
+	string ticketOrdered[MAX_ORDERS];	// Store Ordered Items
+	int ticketPrices[MAX_ORDERS]{};		// Store Prices of Ordered Items
+	int userCount = 0;
+	const int MAX_USER = 5;
+	int userID[MAX_USER]{};
+	string userName[MAX_USER];
+	string userPwd[MAX_USER];
+
+start:
+	logo();
+	header();
+
+startOver:
+	mainMenu();	// call out menu
+	string opt_MainMenu = selectValidation(1, 5, Msg_selection);		// validation
+	switch (stoi(opt_MainMenu)) {
+	case 1:
+		/* Schedule */
+		cout << "\nYou Selected View Schedule Train" << endl;
+		trainSchedule();
+		return main();
+	case 2:
+		cout << "\nYou Selected Book Ticket" << endl;
+		do {
+			cout << spaceline << endl;
+			cout << "Enter your name: ";
+			cin >> name;
+			getline(cin, name);
+			cout << "\nEnter your phone number: +60";
+			cin >> phonenum;
+			trainSchedule();
+			cout << "\nWhat TrainNo you want to book: ";
+			cin >> trainno;
+
+			switch (trainno)
+			{
+			case 1:
+				priceSelected = price101;
+				trainSelected = "Express KL";
+				break;
+			case 2:
+				priceSelected = price102;
+				trainSelected = "Johor Line";
+				break;
+			case 3:
+				priceSelected = price103;
+				trainSelected = "Night Rider";
+				break;
+			case 4:
+				priceSelected = price104;
+				trainSelected = "Perlis Line";
+				break;
+			case 5:
+				priceSelected = price105;
+				trainSelected = "Fast Line";
+				break;
+			default:
+				cout << "Invalid Train No !Please type again!" << endl;
+			}
+
+
+			temptotal += priceSelected;
+
+			cout << "\nYou Have Selected " << trainSelected << endl;
+
+			if (ticketCount == (MAX_ORDERS - 1)) {
+				cout << "\nMaximum Booking Exceed!! [Max " << MAX_ORDERS << " Order / Person]" << endl;
+				anotherOrder = 'N';
+				cout << "\nPress Any Button To Continue" << endl;
+				char conti = _getch();
+			}
+			else {
+				cout << spaceline << endl;
+				cout << "\nDo You Want To Make Another Booking? [Y/N]" << endl;
+				cout << Msg_selection;
+				anotherOrder = alphavalidation('Y', 'N');
+			}
+
+
+			ticketCount++;
+
+		} while (anotherOrder == 'Y');
+
+		/* Calculation */
+		ssttotal = (temptotal * 0.08);
+		if (isMember) subtotal = (temptotal + ssttotal) * 0.8;
+		else subtotal = (temptotal + ssttotal);
+		cout << "\nTotal Payable Amount : RM " << fixed << setprecision(2) << temptotal << endl;
+		cout << spaceline << endl;
+		cout << "inc SST 8%      : RM " << fixed << setprecision(2) << ssttotal << endl;
+		cout << "Sub Total (RM)  : RM " << fixed << setprecision(2) << subtotal << endl;
+		cout << spaceline << endl;
+		if (isMember) {
+			cout << "You Award 25% Discount" << endl;
+			discount = (temptotal + ssttotal) * 0.25;
+		}
+
+		payment_Menu();
+		paymethod = alphavalidation('A', 'B');
+
+		if (paymethod == 'A') {
+
+			paymentSelected = "Cash";
+			cout << "\nPlease Enter Your Payment Amount : RM ";
+			double payamt = paymentvalidation(subtotal);
+
+			change = payamt - subtotal;
+			cout << "Your change is : RM ";
+			change = payamt - subtotal;
+			fineDisplay(change);
+
+		}
+		else if (paymethod == 'B') {
+			paymentSelected = "Credit Card / Debit Card";
+			cout << "\nPlease Enter Card Number : ";
+			creditnum = creditcardvalidation();
+		}
+
+		cout << "\nDo You Need a Invoice? [Y/N]" << endl << Msg_selection;
+		invoice = alphavalidation('Y', 'N');
+
+		/* Display Invoice */
+		if (invoice == 'Y')
+			return main();
+
+	case 3:
+		custserviceticket(ticketCount);
+		goto startOver;
+
+	case 4:
+	{
+	userlogin:
+		login();		// call out login
+		string opt_LoginMenu = selectValidation(1, 3, Msg_selection);		//validation
+
+		switch (stoi(opt_LoginMenu)) {
+		case 1: {
+			bool userFound = loginProcess(userCount, userID, userName, userPwd);
+			if (!userFound) goto userlogin;
+			else isMember = true;
+			goto start;
+		}
+		case 2:
+			userCount = registerProcess(userCount, MAX_USER, userID, userName, userPwd);
+			goto userlogin;
+
+		case 3:
+			sysClr();
+			cout << "Exit Menu..." << endl;
+			goto start;
+		}
+	}
+
+	return 0;
+	}
+}
